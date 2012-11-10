@@ -1,0 +1,20 @@
+# Uncomment and modify this line for client-side installation
+# remote my-amazon-hostname-or-ip
+
+dev tun
+
+# On the client side swap these IP addresses
+ifconfig 192.168.100.1 192.168.100.2
+
+# Don't forget to create the key
+# openvpn --genkey --secret home.key
+# See http://openvpn.net/index.php/open-source/documentation/miscellaneous/78-static-key-mini-howto.html
+# for details
+secret home.key
+
+comp-lzo
+
+keepalive 10 60
+ping-timer-rem
+persist-tun
+persist-key
