@@ -1,0 +1,4 @@
+IPython
+boto
+PyYAML
+-e git+https://github.com/michaelcontento/revolver.git#egg=revolver

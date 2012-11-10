@@ -1,0 +1,37 @@
+#-------------------------------------------------------------------------------
+# EC2 instance settings (used to create instance)
+#-------------------------------------------------------------------------------
+
+# My access requisites
+AWS_ACCESS_KEY_ID: AAAAAAAAAAAAAAAAAAAAAAA
+AWS_SECRET_ACCESS_KEY: foobarbaz
+
+# The region when I want to create my virtual machine
+EC2_REGION: eu-west-1
+
+# Image identifier (depends on region!)
+EC2_AMI: ami-c1aaabb5    # Ubuntu Server 12.04.1 LTS
+
+# Instance type
+EC2_INSTANCE_TYPE: t1.micro
+
+# My own elastic IP which I reserved to myself previously
+EC2_ELASTIC_IP: x.x.x.x
+
+# Security group name allowing access to TCP ports 80 and 22, and UDP port 1194
+# (openvpn)
+# I created it via web-interface in advance
+EC2_SECURITY_GROUP_NAME: my-sg-name
+
+# SSH keypair name. I exported my public key in advance
+EC2_KEYPAIR_NAME: my-key-name
+
+# Arbitrary tag name to differentiate this machine from others
+EC2_INSTANCE_TAG: DevelopmentInstance
+
+#-------------------------------------------------------------------------------
+# EC2 configuration settings (used to post-installation configuration)
+#-------------------------------------------------------------------------------
+
+# My hostname which is used by Fabric script to connect to
+HOSTNAME: amazon.example.com
