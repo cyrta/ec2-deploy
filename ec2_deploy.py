@@ -135,13 +135,13 @@ class EC2InstanceConfigurator(object):
         (re)-configure instance configurator. Useful if you changed your settings
         """
         self.s = settings or Settings(self.settings_filename)
+        env.update(host_string=self.s.HOSTNAME, user='ubuntu',
+                   disable_known_hosts=True)
 
     def configure(self):
         """
         Main method. Perform main configuration
         """
-        env.update(host_string=self.s.HOSTNAME, user='ubuntu',
-                   disable_known_hosts=True)
         with ctx.hide('output'):
             package.update()
             self.configure_openvpn()
@@ -160,10 +160,11 @@ class EC2InstanceConfigurator(object):
             if os.path.isfile(full_name):
                 name = os.path.basename(full_name)
                 openvpn.key_ensure(name, open(full_name).read())
+        openvpn.restart()
 
     def configure_nginx(self):
         """
-        Configure nginx sservice
+        Configure nginx service
         """
         nginx.ensure()
         for full_name in glob.glob('nginx/*'):
